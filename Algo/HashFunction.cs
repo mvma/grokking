@@ -18,7 +18,10 @@ internal sealed class HashFunction
         int total = 0;
         for (int i = 0; i <= word.Length - 1; i++)
         {
-            total += _map[word[i]];
+            if (_map.ContainsKey(word[i]))
+            {
+                total += _map[word[i]];
+            }
         }
 
         return total % slots;
