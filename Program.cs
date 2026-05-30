@@ -1,4 +1,5 @@
-﻿using Grooking.Algo;
+﻿using Grokking.Algo;
+using Grooking.Algo;
 
 Console.WriteLine("Grokking playground...");
 
@@ -24,3 +25,20 @@ for(int i = 0; i < bookTitles.Length; i++)
     int index = hashFunction.Hash(bookTitles[i], slots:10);
     Console.WriteLine($"{bookTitles[i]} at index {index}");
 }
+
+Dictionary<string,List<string>> nodes = new Dictionary<string,List<string>>
+{
+    {"A", new List<string>{"B", "H", "E"}},
+    {"B", new List<string>{"C", "D"}},
+    {"C", null},
+    {"D", new List<string>{"I"}},
+    {"E", new List<string>{"G"}},
+    {"F", null},
+    {"G", null},
+    {"H", new List<string>{"F"}},
+    {"I", null}
+};
+
+BreathFirstSearch breathFirstSearch = new BreathFirstSearch();
+bool existsNode = breathFirstSearch.Search(nodes, "A", "G");
+Console.WriteLine($"The result for the node search is {existsNode}");
